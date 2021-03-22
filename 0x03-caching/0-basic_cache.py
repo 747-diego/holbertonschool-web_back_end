@@ -16,6 +16,6 @@ class BasicCache(base_caching.BaseCaching):
 
     def get(self, key):
         """Must return the value."""
-        if key is None or key is not self.cache_data:
+        if key is None:
             return None
         return self.cache_data.get(key)
