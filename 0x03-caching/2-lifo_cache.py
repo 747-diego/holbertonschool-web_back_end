@@ -19,7 +19,7 @@ class LIFOCache(base_caching.BaseCaching):
             return
         AmountOfKeys = len(self.CachingKeys)
         if AmountOfKeys == base_caching.BaseCaching.MAX_ITEMS:
-            print("DISCARD: {}".format(str(self.CachingKeys[0])))
+            print("DISCARD: {}".format(str(self.CachingKeys[-1])))
             del self.cache_data[self.CachingKeys[0]]
             self.CachingKeys = self.CachingKeys[:-1]
 
