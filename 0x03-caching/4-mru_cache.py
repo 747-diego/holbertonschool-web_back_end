@@ -18,10 +18,10 @@ class MRUCache(base_caching.BaseCaching):
         if key is None or item is None:
             return
         AmountOfKeys = len(self.CachingKeys)
-        if AmountOfKeys > base_caching.BaseCaching.MAX_ITEMS:
-            print("DISCARD: {}".format(str(self.CachingKeys[-2])))
-            del self.cache_data[self.CachingKeys[-2]]
-            self.CachingKeys = self.CachingKeys[:-2]
+        if AmountOfKeys == base_caching.BaseCaching.MAX_ITEMS:
+            print("DISCARD: {}".format(str(self.CachingKeys[-1])))
+            del self.cache_data[self.CachingKeys[-1]]
+            self.CachingKeys = self.CachingKeys[:-1]
         if key in self.CachingKeys:
             self.CachingKeys.remove(key)
         self.CachingKeys.append(key)
