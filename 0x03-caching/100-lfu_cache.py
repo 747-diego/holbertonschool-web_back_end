@@ -5,8 +5,8 @@
 import base_caching
 
 
-class MRUCache(base_caching.BaseCaching):
-    """A class BasicCache that inherits from BaseCaching."""
+class LFUCache(base_caching.BaseCaching):
+    """A class LFUCache that inherits from BaseCaching."""
 
     def __init__(self):
         """Overload init."""
