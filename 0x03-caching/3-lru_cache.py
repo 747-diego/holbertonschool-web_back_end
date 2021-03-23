@@ -32,6 +32,5 @@ class LRUCache(base_caching.BaseCaching):
         if key is not None and key in self.CachingKeys:
             self.CachingKeys.remove(key)
             self.CachingKeys.append(key)
-
-            return None
-        return self.cache_data.get(key)
+            return self.cache_data.get(key)
+        return None
