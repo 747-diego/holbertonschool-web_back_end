@@ -46,7 +46,6 @@ class Server:
         for VerifiedIndex in range(page_size):
             VerifiedIndex = index + VerifiedIndex
         ActualPage = [keyValues.get(VerifiedIndex)]
-
         return {
             "index": currentIndex,
             "next_index": nextIndex,
