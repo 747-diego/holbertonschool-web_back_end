@@ -40,10 +40,16 @@ class Server:
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """Return a dictionary with the following key-value pairs."""
         keyValues = self.indexed_dataset()
+        currentIndex = index
+        nextIndex = index + page_size
+        CurrentPageSIze = page_size
+        for VerifiedIndex in range(page_size):
+            VerifiedIndex = index + VerifiedIndex
+        ActualPage = [keyValues.get(VerifiedIndex)]
 
         return {
-            "index": index,
-            "next_index": index + page_size,
-            "page_size": page_size,
-            "data": [keyValues.get(index + dataP) for dataP in range(page_size)]
+            "index": currentIndex,
+            "next_index": nextIndex,
+            "page_size": CurrentPageSIze,
+            "data": ActualPage
         }
