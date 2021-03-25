@@ -9,7 +9,7 @@ from typing import List
 
 def index_range(page: int, page_size: int) -> typing.Tuple[int, int]:
     """A-Function should return a tuple."""
-    return ((page * page_size) - page_size, (page * page_size))
+    return((page * page_size) - page_size, (page * page_size))
 
 
 class Server:
@@ -43,4 +43,4 @@ class Server:
             raise AssertionError
         CorrectIndex = index_range(page, page_size)
         dataset = self.dataset()
-        return dataset[CorrectIndex[0]:CorrectIndex[1]]
+        return(dataset[CorrectIndex[0]:CorrectIndex[1]])
