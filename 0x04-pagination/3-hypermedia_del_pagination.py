@@ -5,6 +5,7 @@ import typing
 import csv
 import math
 from typing import List, Dict
+td = typing.Dict
 
 
 class Server:
@@ -37,7 +38,7 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_hyper_index(self, index: int = None, page_size: int = 10) -> typing.Dict:
+    def get_hyper_index(self, index: int = None, page_size: int = 10) -> td:
         """Return a dictionary with the following key-value pairs."""
         keyValues = self.indexed_dataset()
         currentIndex = index
