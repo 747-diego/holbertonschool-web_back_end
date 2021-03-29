@@ -6,8 +6,8 @@ import logging
 import os
 import re
 
-
-import logging
+# A TUPLE CONTAINED WITH THE 5 MOST IMPORTANT FIELDS FROM USER DATA
+PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
 
 class RedactingFormatter(logging.Formatter):
@@ -38,3 +38,24 @@ def filter_datum(fields: typing.List[str], redaction: str,
         message = re.sub(obfuscated + "=.*?" + separator,
                          obfuscated + "=" + redaction + separator, message)
     return(message)
+
+
+def get_logger() -> logging.Logger:
+    """No arguments and returns a logging.Logger object."""
+    pieFields = list(PII_FIELDS)
+    loggedData = logging.Logger('user_data')
+
+    loggedData.propagate = False
+
+    loggedData.setLevel(logging.INFO)
+
+    fieldsFormatted = RedactingFormatter(pieFields)
+
+    fieldsHandled = logging.StreamHandler()
+
+    loggedData.setFormatter(fieldsFormatted)
+
+    loggedData.addHandler(fieldsHandled)
+
+    Data = loggedData
+    return(Data)
