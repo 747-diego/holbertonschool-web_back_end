@@ -14,6 +14,8 @@ def hash_password(password: str) -> bytes:
 
     if (password):
         return(True)
+    else:
+        return(False)
 
 
 def is_valid(hashed_password: bytes, password: str) -> bool:
@@ -25,3 +27,5 @@ def is_valid(hashed_password: bytes, password: str) -> bool:
 
     if (password):
         return(True)
+    else:
+        return(False)
