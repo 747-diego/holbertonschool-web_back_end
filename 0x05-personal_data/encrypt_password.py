@@ -12,10 +12,7 @@ def hash_password(password: str) -> bytes:
     SaltyString = bcrypt.gensalt()
     password = bcrypt.hashpw(PWencode(UTF), SaltyString)
 
-    if (password):
-        return(True)
-    else:
-        return(False)
+    return(password)
 
 
 def is_valid(hashed_password: bytes, password: str) -> bool:
@@ -25,7 +22,4 @@ def is_valid(hashed_password: bytes, password: str) -> bool:
     ValidatedHash = hashed_password
     password = bcrypt.checkpw(PWencode(UTF), ValidatedHash)
 
-    if (password):
-        return(True)
-    else:
-        return(False)
+    return(password)
