@@ -3,8 +3,9 @@
 
 import typing
 import logging
-import os
+import mysql.connector
 import re
+from os import environ
 
 # A TUPLE CONTAINED WITH THE 5 MOST IMPORTANT FIELDS FROM USER DATA
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
@@ -56,3 +57,18 @@ def get_logger() -> logging.Logger:
 
     Data = loggedData
     return(Data)
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """A-function that returns a connector to the database."""
+    # STORING CREDENTIALS INTO ENVIROMENTAL VARIABLES
+    userName = environ['PERSONAL_DATA_DB_USERNAME']
+    userPassword = environ['PERSONAL_DATA_DB_PASSWORD']
+    personalHost = environ['PERSONAL_DATA_DB_HOST']
+    personalName = environ['PERSONAL_DATA_DB_NAME']
+
+    MYSQLconnector = mysql.connector.connect(user=userName,
+                                             password=userPassword,
+                                             host=personalHost,
+                                             database=personalName)
+    return(MYSQLconnector)
