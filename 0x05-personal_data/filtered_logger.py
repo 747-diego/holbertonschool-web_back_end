@@ -44,7 +44,7 @@ def filter_datum(fields: typing.List[str], redaction: str,
 def get_logger() -> logging.Logger:
     """No arguments and returns a logging.Logger object."""
     pieFields = list(PII_FIELDS)
-    loggedData = logging.Logger('user_data')
+    loggedData = logging.getLogger('user_data')
 
     loggedData.propagate = False
     loggedData.setLevel(logging.INFO)
@@ -72,3 +72,17 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
                                              host=personalHost,
                                              database=personalName)
     return(MYSQLconnector)
+
+
+def main() -> None:
+    """Take no arguments and returns nothing."""
+    test = get_db().cursor()
+    test.execute("SELECT * FROM users;")
+
+    for row in enumerate(test):
+        get_logger().info(row)
+    test.close()
+
+
+if __name__ == "__main__":
+    main()
