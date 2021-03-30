@@ -46,15 +46,12 @@ def get_logger() -> logging.Logger:
     loggedData = logging.Logger('user_data')
 
     loggedData.propagate = False
-
     loggedData.setLevel(logging.INFO)
 
     fieldsFormatted = RedactingFormatter(pieFields)
-
     fieldsHandled = logging.StreamHandler()
 
     loggedData.setFormatter(fieldsFormatted)
-
     loggedData.addHandler(fieldsHandled)
 
     Data = loggedData
