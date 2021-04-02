@@ -6,7 +6,7 @@ import base_caching
 
 
 class LIFOCache(base_caching.BaseCaching):
-    """A class BasicCache that inherits from BaseCaching."""
+    """A class LIFOCache that inherits from BaseCaching."""
 
     def __init__(self):
         """Overload init."""

@@ -6,7 +6,7 @@ import base_caching
 
 
 class MRUCache(base_caching.BaseCaching):
-    """A class BasicCache that inherits from BaseCaching."""
+    """A class MRUCache that inherits from BaseCaching."""
 
     def __init__(self):
         """Overload init."""

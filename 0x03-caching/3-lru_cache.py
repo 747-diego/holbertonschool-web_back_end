@@ -6,7 +6,7 @@ import base_caching
 
 
 class LRUCache(base_caching.BaseCaching):
-    """A class BasicCache that inherits from BaseCaching."""
+    """A class LRUCache that inherits from BaseCaching."""
 
     def __init__(self):
         """Overload init."""

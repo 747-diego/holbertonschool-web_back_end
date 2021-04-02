@@ -47,3 +47,15 @@ class Server:
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> typing.Dict:
         """Returns a dictionary containing the following key-value pairs."""
+        dataset_len = self.dataset().__len__()
+        dataset = self.get_page(page, page_size)
+        total_pages = math.ceil(dataset_len / page_size)
+
+        return {
+            "page_size": len(dataset),
+            "page": page,
+            "data": dataset,
+            "next_page":  None if page + 1 > total_pages else page + 1,
+            "prev_page": None if page - 1 <= 0 else page - 1,
+            "total_pages": total_pages
+        }
