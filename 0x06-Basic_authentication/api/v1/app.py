@@ -10,6 +10,7 @@ import os
 app = Flask(__name__)
 app.register_blueprint(app_views)
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
+auth = None
 
 
 @app.errorhandler(404)
@@ -28,6 +29,21 @@ def forbidden(error) -> str:
 def unauthorized(error) -> str:
     """Unauthorized request handler."""
     return jsonify({"error": "Unauthorized"}), 401
+
+
+@app.before_request
+def before():
+    """Filter each request."""
+    if auth is not None:
+        APIlist = ['/api/v1/status/',
+                   '/api/v1/unauthorized',
+                   '/api/v1/forbidden']
+        if auth:
+            if auth.require_auth(request.path, APIlist):
+                if auth.authorization_header(request) is None:
+                    abort(401)
+                if auth.current_user(request) is None:
+                    abort(403)
 
 
 if __name__ == "__main__":
