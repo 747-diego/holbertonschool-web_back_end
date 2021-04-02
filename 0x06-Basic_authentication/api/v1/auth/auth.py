@@ -20,7 +20,8 @@ class Auth:
             path = path + '/'
         if path in excluded_paths:
             return(False)
-        return(True)
+        else:
+            return(True)
 
     def authorization_header(self, request=None) -> str:
         """Public method."""
@@ -29,7 +30,7 @@ class Auth:
         if request is None:
             return(None)
         else:
-            return request.headers.get('Authorization')
+            return(request.headers.get('Authorization', None))
 
     def current_user(self, request=None) -> TypeVar('User'):
         """Public method."""
