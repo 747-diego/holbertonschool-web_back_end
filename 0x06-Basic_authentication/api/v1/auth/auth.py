@@ -30,7 +30,7 @@ class Auth:
         if request is None:
             return(None)
         else:
-            return(request.headers.get('Authorization', None))
+            return(request.headers.get('Authorization'))
 
     def current_user(self, request=None) -> TypeVar('User'):
         """Public method."""
