@@ -43,6 +43,7 @@ def unauthorized(error) -> str:
 @app.before_request
 def before():
     """Filter each request."""
+    request.current_user = auth.current_user(request)
     if auth is not None:
         APIlist = ['/api/v1/status/',
                    '/api/v1/unauthorized',
