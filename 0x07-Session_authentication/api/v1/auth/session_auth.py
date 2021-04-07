@@ -9,6 +9,7 @@ import uuid
 class SessionAuth(Auth):
     """Session Authentication."""
 
+    # @app_views.route()
     user_id_by_session_id = {}
 
     def create_session(self, user_id: str = None) -> str:
