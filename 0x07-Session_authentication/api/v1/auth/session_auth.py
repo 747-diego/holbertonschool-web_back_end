@@ -34,7 +34,5 @@ class SessionAuth(Auth):
         """User instance based on a cookie value."""
         SessionCookie = self.session_cookie(request)
         CookieID = self.user_id_for_session_id(SessionCookie)
-        if type(CookieID) == dict:
-            CookieID = CookieID["CookeID"]
         UserID = User.get(CookieID)
         return(UserID)
