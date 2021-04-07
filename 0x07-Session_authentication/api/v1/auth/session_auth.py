@@ -29,3 +29,10 @@ class SessionAuth(Auth):
             return(None)
         id = self.user_id_by_session_id.get(session_id)
         return(id)
+
+    def session_cookie(self, request=None):
+        """Session cookie."""
+        if request is None:
+            return(None)
+        SESSION_NAME = self.session_cookie(request)
+        return(User.get(self.user_id_for_session_id(SESSION_NAME)))
