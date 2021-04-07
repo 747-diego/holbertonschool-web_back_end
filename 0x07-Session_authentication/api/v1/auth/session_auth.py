@@ -20,3 +20,12 @@ class SessionAuth(Auth):
         GeneratedSession = str(uuid.uuid4())
         self.user_id_by_session_id[GeneratedSession] = user_id
         return(GeneratedSession)
+
+    def user_id_for_session_id(self, session_id: str = None) -> str:
+        """User ID for Session ID mandatory."""
+        if session_id is None:
+            return(None)
+        if session_id is not str:
+            return(None)
+        id = self.user_id_by_session_id.get(session_id)
+        return(id)
