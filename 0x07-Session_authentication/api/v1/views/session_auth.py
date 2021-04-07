@@ -8,7 +8,7 @@ import os
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def loginFlask() -> str:
-    """Flask that handles all routes for Session Authentication."""
+    """Flask that handles all login routes for Session Authentication."""
     UserName = request.form.get("email", None)
     UserPassword = request.form.get("password", None)
     # If email is missing
@@ -33,3 +33,17 @@ def loginFlask() -> str:
         CookieResponse = os.getenv("SESSION_NAME", None)
         DictionaryRepresentation.set_cookie(CookieResponse, SessionID)
         return(DictionaryRepresentation)
+
+
+@app_views.route('/auth_session/logout',
+                 methods=['DELETE'],
+                 strict_slashes=False)
+def logoutFlask() -> str:
+    """Flask that handles all logout routes for Session Authentication."""
+    from api.v1.app import auth
+    DeleteIDsession = auth.destroy_session(request)
+    if DeleteIDsession:
+        abort(404)
+        return(False)
+    else:
+        return(jsonify({}), 200)
