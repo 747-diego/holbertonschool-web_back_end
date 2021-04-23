@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Basic Flask app."""
 from flask import Flask, request, render_template
-from os import getenv
+import os
 
 app = Flask(__name__)
 
@@ -13,5 +13,5 @@ def Basic_Flask():
 
 
 if __name__ == "__main__":
-    IPaddress = getenv("API_HOST", "0.0.0.0")
+    IPaddress = os.getenv("API_HOST", "0.0.0.0")
     app.run(host=IPaddress, port='5000')
