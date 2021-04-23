@@ -52,8 +52,8 @@ def get_locale():
 def get_user() -> typing.Union[dict, None]:
     """Mock loggin in."""
     login = request.args.get('login_as')
-    password = int(request.args.get('login_as'))
     if login:
+        password = int(request.args.get('login_as'))
         if password in users:
             return(users.get(password))
     else:
