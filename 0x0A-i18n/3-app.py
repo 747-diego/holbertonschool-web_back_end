@@ -17,14 +17,14 @@ class Config(object):
 
 
 app = Flask(__name__)
-app.config.from_object('2-app.Config')
+app.config.from_object('3-app.Config')
 babel = Babel(app)
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
 def Basic_Flask():
     """Basic-Flask-App."""
-    return(render_template('2-index.html'))
+    return(render_template('3-index.html'))
 
 
 @babel.localeselector
