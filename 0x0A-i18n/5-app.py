@@ -27,14 +27,14 @@ class Config(object):
 
 
 app = Flask(__name__)
-app.config.from_object('4-app.Config')
+app.config.from_object('5-app.Config')
 babel = Babel(app)
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
 def Basic_Flask():
     """Basic-Flask-App."""
-    return(render_template('4-index.html'))
+    return(render_template('5-index.html'))
 
 
 @babel.localeselector
@@ -52,8 +52,8 @@ def get_locale():
 def get_user() -> typing.Union[dict, None]:
     """Mock loggin in."""
     login = request.args.get('login_as')
+    password = int(request.args.get('login_as'))
     if login:
-        password = int(request.args.get('login_as'))
         if password in users:
             return(users.get(password))
     else:
