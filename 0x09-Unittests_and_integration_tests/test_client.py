@@ -4,8 +4,8 @@
 from unittest import TestCase, mock
 from unittest.mock import patch, Mock
 from parameterized import parameterized
-from client import GithubOrgClient
-import client
+from client import GithubOrgClient, get_json
+
 
 
 class TestGithubOrgClient(TestCase):
@@ -15,9 +15,9 @@ class TestGithubOrgClient(TestCase):
         ("google"),
         ("abc"),
     ])
-    @patch('client.get_json')
-    def test_org(self, client, SearchApi):
+    @patch('get_json')
+    def test_org(self, client, api):
         """Testing-Output."""
         GithubUser = GithubOrgClient(client)
         GithubUser.org()
-        SearchApi.assert_called_once_with("https://api.github.com/orgs/"+client)
+        api.assert_called_once_with("https://api.github.com/orgs/"+client)
