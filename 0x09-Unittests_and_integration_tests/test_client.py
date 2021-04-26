@@ -12,11 +12,13 @@ from utils import get_json
 class TestGithubOrgClient(unittest.TestCase):
     """Testing-Github-Client."""
 
+    deco = 'client.get_json'
+
     @parameterized.expand([
         ("google"),
         ("abc"),
     ])
-    @patch('get_json')
+    @patch(deco)
     def test_org(self, client, api):
         """Testing-Output."""
         GithubUser = GithubOrgClient(client)
