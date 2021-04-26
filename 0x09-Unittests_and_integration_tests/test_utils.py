@@ -68,4 +68,4 @@ class TestMemoize(TestCase):
             method = test_class.a_property
             method = test_class.a_property
             self.assertEqual(method, 42)
-            test.a_method.assert_called_with()
+            test.assert_called_with()
