@@ -4,8 +4,8 @@
 from unittest import TestCase, mock
 from unittest.mock import patch, Mock
 from parameterized import parameterized
-import client
 from client import GithubOrgClient
+import client
 
 
 class TestGithubOrgClient(TestCase):
@@ -20,6 +20,4 @@ class TestGithubOrgClient(TestCase):
         """Testing-Output."""
         GithubUser = GithubOrgClient(client)
         GithubUser.org()
-        SearchApi.assert_called_once_with(
-            "https://api.github.com/orgs/{client}"
-            )
+        SearchApi.assert_called_once_with("https://api.github.com/orgs/"+client)
