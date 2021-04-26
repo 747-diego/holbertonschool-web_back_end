@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Parameterize and patch as decorators."""
 
-from unittest import TestCase, mock
+from unittest import mock
+import unittest
 from unittest.mock import patch, Mock
 from parameterized import parameterized
-from client import GithubOrgClient, get_json
+from client import GithubOrgClient
+from utils import get_json
 
 
-
-class TestGithubOrgClient(TestCase):
+class TestGithubOrgClient(unittest.TestCase):
     """Testing-Github-Client."""
 
     @parameterized.expand([
