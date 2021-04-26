@@ -18,8 +18,8 @@ class TestGithubOrgClient(TestCase):
     @patch('client.get_json')
     def test_org(self, client, SearchApi):
         """Testing-Output."""
-        client = GithubOrgClient(client)
-        client.org()
+        GithubUser = GithubOrgClient(client)
+        GithubUser.org()
         SearchApi.assert_called_once_with(
             "https://api.github.com/orgs/{client}"
             )
