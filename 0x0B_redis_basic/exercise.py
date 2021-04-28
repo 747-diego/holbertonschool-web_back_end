@@ -7,6 +7,34 @@ from sys import byteorder
 from typing import Union, Callable, Optional
 
 
+def count_calls(method: Callable) -> Callable:
+    """Incrementing values."""
+    retrieveInput = method.__qualname__
+
+    @wraps(method)
+    def storeOuput(self, *args, **kwargs):
+        """Execute the wrapped function to retrieve the output."""
+        self._redis.incr(retrieveInput)
+        return(method(self, *args, **kwargs))
+    return(storeOuput)
+
+
+def call_history(method: Callable) -> Callable:
+    """Storing-lists."""
+    retrieveInput = method.__qualname__
+
+    @wraps(method)
+    def storeLists(self, *args, **kwargs):
+        """Storing-Lists."""
+        appendInput = retrieveInput+':inputs'
+        appendPush = self._redis.rpush()
+        appendPush(appendInput, str(args))
+        output = method(self, *args, **kwargs)
+        appendPush(appendInput, output)
+        return(output)
+    return(storeLists)
+
+
 def replay(method: Callable) -> None:
     """Retrieving-lists."""
     retrieveInput = method.__qualname__
@@ -21,18 +49,6 @@ def replay(method: Callable) -> None:
         Cache = str(call[1].decode())
         print(retrieveInput+"(*"+storedName+") -> "+Cache)
     return(None)
-
-
-def count_calls(method: Callable) -> Callable:
-    """Incrementing values."""
-    retrieveInput = method.__qualname__
-
-    @wraps(method)
-    def storeOuput(self, *args, **kwargs):
-        """Execute the wrapped function to retrieve the output."""
-        self._redis.incr(retrieveInput)
-        return(method(self, *args, **kwargs))
-    return(storeOuput)
 
 
 class Cache:
