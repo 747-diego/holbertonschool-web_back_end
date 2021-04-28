@@ -27,7 +27,7 @@ def replay(method: Callable) -> None:
     replayOne = calls.lrange(callList[0], 0, -1)
     replayTwo = calls.lrange(callList[1], 0, -1)
     history = list(zip(replayOne, replayTwo))
-    print(method.__qualname__+" was called "+str(len(history))+" times:")
+    print(retrieveInput+" was called "+str(len(history))+" times:")
     for call in history:
         storedName = str(call[0].decode())
         Cache = str(call[1].decode())
