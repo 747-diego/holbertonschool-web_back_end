@@ -20,18 +20,19 @@ def count_calls(method: Callable) -> Callable:
 
 
 def replay(method: Callable) -> None:
-    """
-    r e p l a y  a  m e t h o d
-    """
-    red = method.__self__._redis
-    keys = (method.__qualname__+":inputs", method.__qualname__+":outputs")
-    io = list(zip(red.lrange(keys[0], 0, -1), red.lrange(keys[1], 0, -1)))
-    print(method.__qualname__+" was called "+str(len(io))+" times:")
-    for item in io:
-        x = str(item[0].decode())
-        y = str(item[1].decode())
-        print(method.__qualname__+"(*"+x+") -> "+y)
-    return None
+    """Retrieving-lists."""
+    retrieveInput = method.__qualname__
+    calls = method.__self__._redis
+    callList = (retrieveInput+":inputs", retrieveInput+":outputs")
+    replayOne = calls.lrange(callList[0], 0, -1)
+    replayTwo = calls.lrange(callList[1], 0, -1)
+    history = list(zip(replayOne, replayTwo))
+    print(retrieveInput+" was called "+str(len(history))+" times:")
+    for call in history:
+        storedName = str(call[0].decode())
+        Cache = str(call[1].decode())
+        print(retrieveInput+"(*"+storedName+") -> "+Cache)
+    return(None)
 
 
 class Cache:
