@@ -9,15 +9,14 @@ from typing import Union, Callable, Optional
 
 def count_calls(method: Callable) -> Callable:
     """Incrementing values."""
-    key = method.__qualname__
+    retrieveInput = method.__qualname__
 
     @wraps(method)
-    def wrapper(self, *args, **kwargs):
-        """ Wrapper for method """
-        self._redis.incr(key)
+    def storeOuput(self, *args, **kwargs):
+        """Execute the wrapped function to retrieve the output."""
+        self._redis.incr(retrieveInput)
         return method(self, *args, **kwargs)
-
-    return wrapper
+    return(storeOuput)
 
 
 class Cache:
