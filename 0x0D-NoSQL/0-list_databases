@@ -1,0 +1,2 @@
+// List all databases in Mongo Shell
+show dbs
