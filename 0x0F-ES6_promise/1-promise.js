@@ -1,4 +1,4 @@
-export default function getFullResponseFromAPI (success) {
+export default function getFullResponseFromAPI(success) {
   const APIresponse = new Promise((resolve, reject) => {
     if (success) {
       resolve(
