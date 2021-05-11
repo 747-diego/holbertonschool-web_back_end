@@ -1,8 +1,8 @@
-export default function getResponseFromAPI () {
+export default function getResponseFromAPI() {
   const APIresponse = new Promise(
     (resolve) => {
       resolve();
-    }
+    },
   );
   return APIresponse;
 }
