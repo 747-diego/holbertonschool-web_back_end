@@ -2,7 +2,8 @@ export default function getFullResponseFromAPIj(success) {
   const APIresponse = new Promise((resolve, reject) => {
     if (success) {
       resolve(
-        { status: 200,
+        {
+          status: 200,
           body: 'Success' },
       );
     } else {
