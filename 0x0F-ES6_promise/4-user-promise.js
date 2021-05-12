@@ -4,5 +4,5 @@ export default function signUpUser(firstName, lastName) {
       { firstName, lastName },
     );
   });
-  return user;
+  return (user);
 }
