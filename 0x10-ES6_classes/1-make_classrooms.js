@@ -6,9 +6,9 @@ export default function initializeRooms() {
   const classroomOne = [19];
   const classroomTwo = [20];
   const classroomThree = [34];
-  const roomOne = classArray.push(new ClassRoom(classroomOne));
-  const roomTwo = classArray.push(new ClassRoom(classroomTwo));
-  const roomThree = classArray.push(new ClassRoom(classroomThree));
+  classArray.push(new ClassRoom(classroomOne));
+  classArray.push(new ClassRoom(classroomTwo));
+  classArray.push(new ClassRoom(classroomThree));
 
-  return ([roomOne, roomTwo, roomThree]);
+  return (classArray);
 }
