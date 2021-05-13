@@ -10,5 +10,5 @@ export default function initializeRooms() {
   const roomTwo = classArray.push(new ClassRoom(classroomTwo));
   const roomThree = classArray.push(new ClassRoom(classroomThree));
 
-  return (roomOne, roomTwo, roomThree);
+  return ([roomOne, roomTwo, roomThree]);
 }
