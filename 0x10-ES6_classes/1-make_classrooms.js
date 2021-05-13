@@ -10,5 +10,5 @@ export default function initializeRooms() {
   classArray.push(new ClassRoom(classroomTwo));
   classArray.push(new ClassRoom(classroomThree));
 
-  return (classArray));
+  return (classArray);
 }
