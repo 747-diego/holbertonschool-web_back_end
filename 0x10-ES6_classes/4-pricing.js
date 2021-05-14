@@ -20,8 +20,8 @@ export default class Pricing {
   }
 
   set amount(amount) {
-    const setAmount = this._amount = amount;
-    return (setAmount);
+    // const setAmount = this._amount = amount;
+    return (this._amount = amount);
   }
 
   get currency() {
