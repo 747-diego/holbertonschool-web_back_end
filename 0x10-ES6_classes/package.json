@@ -1,0 +1,22 @@
+{
+  "name": "0x10-es6_classes",
+  "version": "1.0.0",
+  "description": "0x10-ES6_classes",
+  "main": "0-classroom.js",
+  "dependencies": {
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.26.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
