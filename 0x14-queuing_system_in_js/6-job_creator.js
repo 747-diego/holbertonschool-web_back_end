@@ -14,6 +14,7 @@ const jobListing = job.create('push_notification_code', contactInfo).save(
 job.on('complete', () => {
   console.log('Notification job completed');
 });
+
 job.on('failed', () => {
   console.log('Notification job failed');
 });
