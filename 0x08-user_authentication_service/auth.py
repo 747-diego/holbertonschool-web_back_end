@@ -11,4 +11,4 @@ from uuid import uuid4
 
 def _hash_password(password: str) -> str:
     """ Test hashing paswprd """
-    return bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+    return hashpw(password.encode('utf-8'), gensalt())
