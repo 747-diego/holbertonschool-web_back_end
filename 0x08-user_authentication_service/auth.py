@@ -10,5 +10,5 @@ from uuid import uuid4
 
 
 def _hash_password(password: str) -> str:
-    """Turn string arguments and returns bytes."""
-    return hashpw(password.encode('utf-8'), gensalt())
+    """ Test hashing paswprd """
+    return bcrypt.hashpw(password.encode(), bcrypt.gensalt())
