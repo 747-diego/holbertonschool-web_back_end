@@ -18,7 +18,7 @@ def welcome() -> str:
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
-def users() -> str:
+def emailCheck() -> str:
     """Email-Verification."""
     form_data = request.form
     if "email" not in form_data:
