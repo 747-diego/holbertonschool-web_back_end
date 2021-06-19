@@ -32,9 +32,9 @@ class DB:
 
     # Task 1. Add User
     def add_user(self, email: str, hashed_password: str) -> User:
-        """Save the user to the Djatabase."""
-        # Adding user to the Database
-        user = User(email=email, hashed_password=hashed_password)
-        self._session.add(user)
+        """ Adds user to db """
+
+        new_user = User(email=email, hashed_password=hashed_password)
+        self._session.add(new_user)
         self._session.commit()
-        return(user)
+        return new_user
