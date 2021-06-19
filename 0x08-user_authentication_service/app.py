@@ -16,16 +16,10 @@ def welcome() -> str:
     """Welcome-to-Flask."""
     return jsonify({"message": "Bienvenue"})
 
+
 @app.route('/users', methods=['POST'], strict_slashes=False)
 def users() -> str:
-    """ POST /users
-    Registers new user with email and pswd in x-www-form-urlencoded request,
-    or finds if user already registered based on email
-    Return:
-      - JSON payload
-    """
-
-    """ form-data uses request.form, body JSON uses request.get_json() """
+    """Email-Verification."""
     form_data = request.form
 
     if "email" not in form_data:
