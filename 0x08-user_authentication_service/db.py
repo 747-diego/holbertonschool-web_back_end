@@ -52,7 +52,6 @@ class DB:
                     "session_id",
                     "reset_token"
                     ]
-
         for keyword in kwargs:
             if keyword not in arguments:
                 raise(InvalidRequestError)
@@ -72,7 +71,6 @@ class DB:
                     "session_id",
                     "reset_token"
                     ]
-
         update = self.find_user_by(id=user_id)
         for keys, values in kwargs.items():
             if keys in arguments:
