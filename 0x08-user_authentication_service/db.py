@@ -62,4 +62,3 @@ class DB:
         if userFound is None:
             raise(NoResultFound)
         return(userFound)
-
