@@ -16,17 +16,35 @@ def welcome() -> str:
     """Welcome-to-Flask."""
     return jsonify({"message": "Bienvenue"})
 
-@app.route("/users", methods=['POST'], strict_slashes=False)
-def register_route() -> str:
-    """ get the register route
+@app.route('/users', methods=['POST'], strict_slashes=False)
+def users() -> str:
+    """ POST /users
+    Registers new user with email and pswd in x-www-form-urlencoded request,
+    or finds if user already registered based on email
+    Return:
+      - JSON payload
     """
-    body = request.form
 
-    try:
-        user = AUTH.register_user(body['email'], body['password'])
-        return jsonify({"email": user.email, "message": "user created"})
-    except ValueError:
-        return jsonify({"message": "email already registered"}), 400
+    """ form-data uses request.form, body JSON uses request.get_json() """
+    form_data = request.form
+
+    if "email" not in form_data:
+        return jsonify({"message": "email required"}), 400
+    elif "password" not in form_data:
+        return jsonify({"message": "password required"}), 400
+    else:
+
+        email = request.form.get("email")
+        pswd = request.form.get("password")
+
+        try:
+            new_user = AUTH.register_user(email, pswd)
+            return jsonify({
+                "email": new_user.email,
+                "message": "user created"
+            })
+        except ValueError:
+            return jsonify({"message": "email already registered"}), 400
 
 
 if __name__ == "__main__":
