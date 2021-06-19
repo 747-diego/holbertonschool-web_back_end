@@ -18,21 +18,25 @@ def welcome() -> str:
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
-def register():
-    """ Register User
-    """
-    if "email" in request.form.keys() and "password" in request.form.keys():
-        try:
-            email = request.form['email']
-            pwd = request.form['password']
-            AUTH.register_user(email, pwd)
-            return jsonify({
-                "email": "{}".format(email),
-                "message": "user created"})
-        except ValueError:
-            return jsonify({"message": "email already registered"}), 400
+def users() -> str:
+    """Email-Verification."""
+    form_data = request.form
+    if "email" not in form_data:
+        return (jsonify({"message": "email required"}), 400)
+    elif "password" not in form_data:
+        return (jsonify({"message": "password required"}), 400)
+    else:
 
-    return jsonify({"message": "missing parameters email or password"})
+        email = request.form.get("email")
+        pswd = request.form.get("password")
+        try:
+            new_user = AUTH.register_user(email, pswd)
+            return (jsonify({
+                "email": new_user.email,
+                "message": "user created"
+            }))
+        except ValueError:
+            return (jsonify({"message": "email already registered"}), 400)
 
 
 if __name__ == "__main__":
