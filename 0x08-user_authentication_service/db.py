@@ -28,6 +28,9 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
+    # Above is the default code that Holberton gave me
+
+    # Task 1. Add User
     def add_user(self, email: str, hashed_password: str) -> User:
         """Save the user to the Djatabase."""
         # Adding user to the Database
@@ -35,42 +38,3 @@ class DB:
         self._session.add(user)
         self._session.commit()
         return(user)
-
-    def find_user_by(self, **kwargs) -> User:
-        """Finding-the-User."""
-        arguments = [
-                    "id",
-                    "email",
-                    "hashed_password",
-                    "session_id",
-                    "reset_token"
-                    ]
-
-        for keyword in kwargs:
-            if keyword not in arguments:
-                raise(InvalidRequestError)
-        userFound = self._session.query(User).filter_by(**kwargs).first()
-        if userFound:
-            return(userFound)
-        if userFound is None:
-            raise(NoResultFound)
-        return(userFound)
-
-    def update_user(self, user_id: int, **kwargs) -> None:
-        """Update user to database."""
-        arguments = [
-                    "id",
-                    "email",
-                    "hashed_password",
-                    "session_id",
-                    "reset_token"
-                    ]
-
-        update = self.find_user_by(id=user_id)
-        for keys, values in kwargs.items():
-            if keys in arguments:
-                setattr(update, keys, values)
-            else:
-                raise(ValueError)
-        self._session.commit()
-        return(None)
