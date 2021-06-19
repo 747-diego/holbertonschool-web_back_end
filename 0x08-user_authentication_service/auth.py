@@ -1,5 +1,7 @@
 #!/bin/env python3
-"""User Authentication."""
+"""User-Authentication."""
+
+
 import bcrypt
 import uuid
 from db import DB
@@ -13,8 +15,7 @@ def _hash_password(password: str) -> str:
 
 
 class Auth:
-    """Auth class to interact with the authentication database.
-    """
+    """Auth class to interact with the authentication database."""
 
     def __init__(self):
         """Init."""
