@@ -17,4 +17,5 @@ class Auth:
     """
 
     def __init__(self):
+        """Init."""
         self._db = DB()
