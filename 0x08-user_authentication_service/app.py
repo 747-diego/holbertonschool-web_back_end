@@ -26,11 +26,10 @@ def emailCheck() -> str:
     elif "password" not in form_data:
         return (jsonify({"message": "password required"}), 400)
     else:
-
         email = request.form.get("email")
-        pswd = request.form.get("password")
+        password = request.form.get("password")
         try:
-            new_user = AUTH.register_user(email, pswd)
+            new_user = AUTH.register_user(email, password)
             return (jsonify({
                 "email": new_user.email,
                 "message": "user created"
