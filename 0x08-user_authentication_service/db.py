@@ -9,7 +9,6 @@ from sqlalchemy.orm.exc import InvalidRequestError
 
 from user import Base, User
 
-
 class DB:
     """Database Module."""
 
@@ -32,9 +31,9 @@ class DB:
 
     # Task 1. Add User
     def add_user(self, email: str, hashed_password: str) -> User:
-        """ Adds user to db """
-
-        new_user = User(email=email, hashed_password=hashed_password)
-        self._session.add(new_user)
+        """Save the user to the Djatabase."""
+        # Adding user to the Database
+        user = User(email=email, hashed_password=hashed_password)
+        self._session.add(user)
         self._session.commit()
-        return new_user
+        return(user)
