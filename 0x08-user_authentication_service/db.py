@@ -62,3 +62,22 @@ class DB:
         if userFound is None:
             raise(NoResultFound)
         return(userFound)
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """Update user to database."""
+        arguments = [
+                    "id",
+                    "email",
+                    "hashed_password",
+                    "session_id",
+                    "reset_token"
+                    ]
+
+        update = self.find_user_by(id=user_id)
+        for keys, values in kwargs.items():
+            if keys in arguments:
+                setattr(update, keys, values)
+            else:
+                raise(ValueError)
+        self._session.commit()
+        return(None)
