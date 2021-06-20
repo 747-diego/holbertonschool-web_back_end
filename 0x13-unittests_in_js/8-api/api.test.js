@@ -2,8 +2,8 @@ const request = require('request');
 const chai = require('chai');
 const { expect } = require('chai');
 
-describe('API test', () => {
-  it('respond with 200 code and body', (done) => {
+describe('TESTING API CONNECTION', () => {
+  it('node server connected', (done) => {
     request('http://localhost:7865', 'GET', (err, res, body) => {
       if (err) throw err;
       expect(res.statusCode).to.equal(200);
