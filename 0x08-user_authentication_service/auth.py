@@ -55,3 +55,30 @@ class Auth:
             return (session_id)
         except NoResultFound:
             return (None)
+
+    def sign_in(self, email: str, password: str) -> bool:
+        """Username works."""
+        try:
+            username = self._db.find_user_by(email=email)
+            if checkpw(password.encode(), username.hashed_password):
+                return True
+        except NoResultFound:
+            pass
+        return False
+
+    def get_user_from_session_id(self, session_id: str) -> str:
+        """Single session string."""
+        try:
+            username = self._db.find_user_by(session_id=session_id)
+            return (username.email + ":" + str(username.id))
+        except NoResultFound:
+            return (None)
+
+    def destroy_session(self, user_id: int) -> None:
+        """Take a single id integer argument and returns None."""
+        try:
+            username = self._db.find_user_by(id=user_id)
+            self._db.update_user(user_id, session_id=None)
+            return (None)
+        except NoResultFound:
+            return (None)
