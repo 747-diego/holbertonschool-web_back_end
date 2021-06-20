@@ -8,7 +8,7 @@ function countStudents (file) {
   try {
     name = data.readFileSync(file, { encoding: 'utf8', flag: 'r' });
   } catch (error) {
-    throw (new Error('Cannot load the database'));
+    throw new Error('Cannot load the database');
   }
 
   const names = name.split('\n');
