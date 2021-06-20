@@ -16,7 +16,7 @@ function countStudents(path) {
 
   for (const line of students) {
     len += 1;
-    if (!(line[3] in student)) {
+    if ((line[3] in student) !== null) {
       student[line[3]] = [];
     }
     student[line[3]].push(line[0]);
