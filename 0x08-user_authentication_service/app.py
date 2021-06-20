@@ -60,5 +60,18 @@ def sign_in():
             abort(401)
 
 
+@app.route('/sessions', methods=['DELETE'], strict_slashes=False)
+def sign_out() -> None:
+    """Password Credentials."""
+    session_id = request.cookies.get('session_id')
+    if session_id:
+        password = AUTH.get_user_from_session_id(session_id)
+        if password:
+            AUTH.destroy_session(password.id)
+            return (redirect(url_for('index')))
+    else:
+        abort(403)
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
