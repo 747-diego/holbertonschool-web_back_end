@@ -44,7 +44,7 @@ class Auth:
                 found_user.hashed_password
                 ))
         except NoResultFound:
-            return False
+            return (False)
 
     def create_session(self, email: str) -> str:
         """Get session ID."""
@@ -61,10 +61,10 @@ class Auth:
         try:
             username = self._db.find_user_by(email=email)
             if checkpw(password.encode(), username.hashed_password):
-                return True
+                return (True)
         except NoResultFound:
             pass
-        return False
+        return (False)
 
     def get_user_from_session_id(self, session_id: str) -> str:
         """Single session string."""
