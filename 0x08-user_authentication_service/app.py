@@ -61,7 +61,7 @@ def sign_in():
 
 
 @app.route('/sessions', methods=['DELETE'], strict_slashes=False)
-def sign_out() -> None:
+def logout() -> None:
     """Password Credentials."""
     session_id = request.cookies.get('session_id')
     if session_id:
@@ -72,6 +72,17 @@ def sign_out() -> None:
     else:
         abort(403)
 
+
+@app.route("/profile", methods=['GET'], strict_slashes=False)
+def profile() -> str:
+    """"""
+    sess = request.cookies.get('session_id', None)
+    if sess is None:
+        abort(403)
+    email_and_id = AUTH.get_user_from_session_id(sess)
+    if email_and_id is None:
+        abort(403)
+    return jsonify({"email": email_and_id.split(":")[0]})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
