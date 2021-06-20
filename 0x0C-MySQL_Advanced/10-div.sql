@@ -1,8 +1,12 @@
 -- Safe divide
 -- SQL script that creates a function SafeDiv
-CREATE FUNCTION SafeDiv
-(INT a, INT b)
-IF b == 0 THEN
-return 0
-ELSE IF
-return a / b
+DELIMITER //
+CREATE FUNCTION SafeDiv (numone INT, numtwo INT)
+RETURNS FLOAT DETERMINISTIC
+BEGIN
+    IF numtwo = 0 THEN
+        RETURN 0;
+    END IF;
+    RETURN numone / numtwo;
+END//
+DELIMITER ;
