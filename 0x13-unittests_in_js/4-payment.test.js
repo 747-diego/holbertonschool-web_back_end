@@ -1,6 +1,5 @@
 const { expect, assert } = require('chai');
 const sinon = require('sinon');
-// const { spy, } = require('sinon');
 
 const sendPaymentRequestToApi = require('./4-payment');
 const utils = require('./utils');
