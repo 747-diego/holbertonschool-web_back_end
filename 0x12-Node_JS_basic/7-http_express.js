@@ -29,7 +29,6 @@ function countStudents(file) {
 }
 
 const app = express();
-
 app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
 });
@@ -39,5 +38,4 @@ app.get('/students', async (req, res) => {
 });
 
 app.listen(1245);
-
 module.exports = app;
