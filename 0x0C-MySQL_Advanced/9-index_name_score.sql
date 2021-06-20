@@ -1,4 +1,3 @@
--- Optimize simple search
--- SQL script that creates an index idx_name_first_score
-CREATE INDEX idx_name_first_score
-(IN user_id INT)
+-- Optimize simple search and score
+-- SQL script that creates an index 
+CREATE INDEX idx_name_first_score ON names (name(1), score);
