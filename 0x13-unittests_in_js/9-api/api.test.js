@@ -28,9 +28,4 @@ describe('index page', () => {
       expect(body).to.equal('Payment methods for cart 12');
     });
   });
-  it('get?', () => {
-    request('http://localhost:7865/', function(err, res, body) {
-      expect(res.request.method).to.equal('GET');
-    });
-  });
 });
