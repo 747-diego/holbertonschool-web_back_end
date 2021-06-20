@@ -5,11 +5,9 @@ const getPaymentTokenFromAPI = require('./6-payment_token');
 
 describe('getPaymentTokenFromAPI', () => {
   it('promise response from API should resolve', () => {
-    getPaymentTokenFromAPI(true)
-      .then((response) => {
-        expect(response).to.eql({ data: 'Successful response from the API' });
-      })
-      .catch((err) => {
-      });
+    const test = getPaymentTokenFromAPI(true);
+    const response = await test;
+    expect(response).to.eql({ data: 'Successful response from the API' });
+    console.log(response);
   });
 });
