@@ -1,6 +1,6 @@
-const { expect, assert } = require('chai');
+const { expect } = require('chai');
 const sinon = require('sinon');
-const { spy } = require('sinon');
+// const { spy } = require('sinon');
 
 const sendPaymentRequestToApi = require('./5-payment');
 
