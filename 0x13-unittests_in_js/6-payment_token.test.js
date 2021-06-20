@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-// const sinon = require('sinon');
+const sinon = require('sinon');
 
 const getPaymentTokenFromAPI = require('./6-payment_token');
 
@@ -10,8 +10,8 @@ describe('getPaymentTokenFromAPI', (done) => {
         expect(response).to.eql({ data: 'Successful response from the API' });
         done();
       })
-      .catch((err) => {
-        done(err);
+      .catch((error) => {
+        done(error);
       });
   });
 });
