@@ -12,32 +12,27 @@ describe('index page', () => {
   afterEach(() => {
     request.get.restore();
     request.post.restore();
-
   });
-
-  it('status code', () => {
+  it('error code 200', () => {
     request('http://localhost:7865/cart/12', function(err, res, body) {
       expect(res.statusCode).to.equal(200);
     });
   });
-  it('status code', () => {
+  it('error code 404', () => {
     request('http://localhost:7865/cart/hello', function(err, res, body) {
       expect(res.statusCode).to.equal(404);
     });
   });
-  it('body returns 1', () => {
+  it('welcome message', () => {
     request('http://localhost:7865/', function(err, res, body) {
       expect(body).to.equal('Welcome to the payment system');
     });
   });
-
-
-  it('body returns 2', () => {
+  it('payment message', () => {
     request('http://localhost:7865/cart/12', function(err, res, body) {
       expect(body).to.equal('Payment methods for cart 12');
     });
   });
-
   it('get?', () => {
     request('http://localhost:7865/', function(err, res, body) {
       expect(res.request.method).to.equal('GET');
