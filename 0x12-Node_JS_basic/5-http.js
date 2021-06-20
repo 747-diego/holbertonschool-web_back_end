@@ -1,10 +1,12 @@
+const http = require('http');
 const fs = require('fs');
 const util = require('util');
-const http = require('http');
 
 const readFile = util.promisify(fs.readFile);
 
 function countStudents(file) {
+  let message;
+
   return readFile(file, 'utf8').then((data) => {
     const classroom = {};
     let seats = 0;
@@ -20,22 +22,21 @@ function countStudents(file) {
       classroom[student[3]].push(student[0]);
     }
 
-    console.log(`Number of students: ${seats}`);
-    for (const i of Object.keys(classroom)) {
-      console.log(`Number of students in ${i}: ${classroom[i].length}. List: ${classroom[i].join(', ')}`);
+    message = `Number of students: ${seats}\n`;
+    for (const name of Object.keys(classroom)) {
+      message += `Number of students in ${name}: ${classroom[name].length}. List: ${classroom[name].join(', ')}\n`;
     }
-  }).catch(() => {
-    throw new Error('Cannot load the database');
-  });
+    return message.slice(0, -1);
+  }).catch(() => 'Cannot load the database');
 }
 
-const app = http.createServer(async (req, res) => {
-  let students;
+const server = http.createServer(async (req, res) => {
+  let seats;
   res.writeHead(200, 'Content-Type', 'text/plain');
   switch (req.url) {
     case '/students':
-      students = await countStudents(process.argv[2]);
-      res.write(`This is the list of our students\n${students}`);
+      seats = await countStudents(process.argv[2]);
+      res.write(`This is the list of our students\n${seats}`);
       res.end();
       break;
 
@@ -46,4 +47,4 @@ const app = http.createServer(async (req, res) => {
   }
 }).listen(1245);
 
-module.exports = app;
+module.exports = server;
