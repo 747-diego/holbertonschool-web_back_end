@@ -4,7 +4,7 @@ const app = express();
 const connection = 7865;
 
 app.get('/', (req, res) => {
-  res.send('Welcome to the payment system');
+  console.log('Welcome to the payment system');
 });
 
 app.listen(connection, () => {
