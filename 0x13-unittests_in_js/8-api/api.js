@@ -12,4 +12,4 @@ app.listen(port, function() {
   console.log(APIconnected);
 });
 
-module.exports = app
+module.exports = app;
