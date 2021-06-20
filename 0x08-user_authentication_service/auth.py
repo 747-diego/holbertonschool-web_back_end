@@ -66,11 +66,11 @@ class Auth:
             pass
         return (False)
 
-    def get_user_from_session_id(self, session_id: str) -> str:
+    def get_user_from_session_id(self, session_id: str) -> User or None:
         """Single session string."""
         try:
             username = self._db.find_user_by(session_id=session_id)
-            return (username.email + ":" + str(username.id))
+            return (username)
         except NoResultFound:
             return (None)
 
