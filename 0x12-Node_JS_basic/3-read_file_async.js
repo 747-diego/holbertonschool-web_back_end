@@ -9,7 +9,7 @@ function countStudents(file) {
     let seats = 0;
 
     const sep = data.split('\n');
-    const students = sep.slice(1).map((seat) => seat.split(',')).filter((line) => seat.length > 0 && seat[0] !== '');
+    const students = sep.slice(1).map((seat) => seat.split(',')).filter((seat) => seat.length > 0 && seat[0] !== '');
 
     for (const student of students) {
       seats += 1;
