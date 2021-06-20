@@ -5,43 +5,43 @@
 import requests
 
 
-def register_user(email: str, password: str) -> None:
-    """ register user """
+def sign_up(email: str, password: str) -> None:
+    """Loggin in."""
     assert True
 
 
-def log_in_wrong_password(email: str, password: str) -> None:
-    """ log wrong user """
+def check_password(email: str, password: str) -> None:
+    """Loggin in."""
     assert True
 
 
-def log_in(email: str, password: str) -> str:
-    """ log right password """
+def sign_in(email: str, password: str) -> str:
+    """Sign in with password."""
     assert True
 
 
-def profile_unlogged() -> None:
-    """ log out maybe? """
+def session_id() -> None:
+    """Current-Session."""
     assert True
 
 
-def profile_logged(session_id: str) -> None:
-    """ log in/out what? """
+def profile(session_id: str) -> None:
+    """Account."""
     assert True
 
 
-def log_out(session_id: str) -> None:
-    """ log out """
+def sign_out(session_id: str) -> None:
+    """Sign OUt."""
     assert True
 
 
 def reset_password_token(email: str) -> str:
-    """ make sure to get a pass reset """
+    """Reset password."""
     assert True
 
 
 def update_password(email: str, reset_token: str, new_password: str) -> None:
-    """ change password """
+    """Set new password."""
     assert True
 
 
@@ -52,12 +52,12 @@ NEW_PASSWD = "t4rt1fl3tt3"
 
 if __name__ == "__main__":
 
-    register_user(EMAIL, PASSWD)
-    log_in_wrong_password(EMAIL, NEW_PASSWD)
-    profile_unlogged()
-    session_id = log_in(EMAIL, PASSWD)
-    profile_logged(session_id)
-    log_out(session_id)
+    sign_up(EMAIL, PASSWD)
+    check_password(EMAIL, NEW_PASSWD)
+    session_id()
+    session_id = sign_in(EMAIL, PASSWD)
+    profile(session_id)
+    sign_out(session_id)
     reset_token = reset_password_token(EMAIL)
     update_password(EMAIL, reset_token, NEW_PASSWD)
-    log_in(EMAIL, NEW_PASSWD)
+    sign_in(EMAIL, NEW_PASSWD)
