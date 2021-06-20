@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 
 describe('Testing numbers', () => {
-  it('1 is equal to 1', () => {
+  it.skip('1 is equal to 1', () => {
     expect(1 === 1).to.be.true;
   });
 
@@ -17,7 +17,7 @@ describe('Testing numbers', () => {
     expect(3 === 3).to.be.true;
   });
 
-  it.skip('4 is equal to 4', () => {
+  it('4 is equal to 4', () => {
     expect(4 === 4).to.be.true;
   });
 
