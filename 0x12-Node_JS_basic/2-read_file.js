@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function countStudents(path) {
+function countStudents (path) {
   const student = {};
   let len = 0;
   let data;
