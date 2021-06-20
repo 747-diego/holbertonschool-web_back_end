@@ -1,12 +1,15 @@
-holbertonschool-web_back_end/0x0A-i18n/templates/5-index.html
-@chriswill88
-chriswill88 [Completed task 5]
- 1 contributor
-7 lines (7 sloc)  196 Bytes
-<title>{{ _('home_title') }}</title>
-<h1>{{ _('home_header') }}</h1>
-{% if username %}
-<p>{{ _('logged_in_as', username=username.name) }}</p>
-{% else %}
-<p>{{ _('not_logged_in') }}</p>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{_('home_title')}}</title>
+</head>
+<body>
+    <h1>{{_('home_header')}}</h1>
+    {% if flask.g.user %} <p>{{ _('logged_in_as', username=flask.g.user['name']) }}</p>
+    {% else %} <p>{{ _('not_logged_in') }}</p>
+    {% endif %}
+</body>
+</html>
