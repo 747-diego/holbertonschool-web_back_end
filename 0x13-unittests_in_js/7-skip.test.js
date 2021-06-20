@@ -9,7 +9,7 @@ describe('Testing numbers', () => {
     expect(2 === 2).to.be.true;
   });
 
-  it('1 is equal to 3', () => {
+  it.skip('1 is equal to 3', () => {
     expect(1 === 3).to.be.true;
   });
 
@@ -21,7 +21,7 @@ describe('Testing numbers', () => {
     expect(4 === 4).to.be.true;
   });
 
-  it.skip('5 is equal to 5', () => {
+  it('5 is equal to 5', () => {
     expect(5 === 5).to.be.true;
   });
 
