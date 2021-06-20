@@ -39,21 +39,21 @@ def emailCheck() -> str:
 
 
 @app.route('/sessions', methods=['POST'], strict_slashes=False)
-def login():
+def sign_in():
     """Username credentials."""
     if "email" in request.form.keys() and "password" in request.form.keys():
         try:
-            email = request.form['email']
-            password = request.form['password']
-            if AUTH.valid_login(email, password):
-                session_id = AUTH.create_session(email)
+            username = request.form['email']
+            passwd = request.form['password']
+            if AUTH.valid_login(username, passwd):
+                session_id = AUTH.create_session(username)
                 response = {
-                    "email": "{}".format(email),
+                    "email": "{}".format(username),
                     "message": "logged in"
                 }
                 response = jsonify(response)
                 response.set_cookie("session_id", session_id)
-                return response
+                return (response)
             else:
                 abort(401)
         except NoResultFound:
