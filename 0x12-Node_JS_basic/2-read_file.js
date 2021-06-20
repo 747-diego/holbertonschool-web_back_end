@@ -1,30 +1,30 @@
-const fs = require('fs');
+const data = require('fs');
 
-function countStudents (path) {
-  const student = {};
-  let len = 0;
-  let data;
+function countStudents(file) {
+  const classroom = {};
+  let seats = 0;
+  let name;
 
   try {
-    data = fs.readFileSync(path, { encoding: 'utf8', flag: 'r' });
-  } catch (err) {
+    name = data.readFileSync(file, { encoding: 'utf8', flag: 'r' });
+  } catch (error) {
     throw new Error('Cannot load the database');
   }
 
-  const datalines = data.split('\n');
-  const students = datalines.slice(1).map((line) => line.split(',')).filter((line) => line.length > 0 && line[0] !== '');
+  const names = name.split('\n');
+  const students = names.slice(1).map((student) => student.split(',')).filter((student) => student.length > 0 && student[0] !== '');
 
-  for (const line of students) {
-    len += 1;
-    if (!(line[3] in student)) {
-      student[line[3]] = [];
+  for (const student of students) {
+    seats += 1;
+    if (!(student[3] in classroom)) {
+      classroom[student[3]] = [];
     }
-    student[line[3]].push(line[0]);
+    classroom[student[3]].push(student[0]);
   }
 
-  console.log(`Number of students: ${len}`);
-  for (const i of Object.keys(student)) {
-    console.log(`Number of students in ${i}: ${student[i].length}. List: ${student[i].join(', ')}`);
+  console.log(`Number of students: ${seats}`);
+  for (const num of Object.keys(classroom)) {
+    console.log(`Number of students in ${num}: ${classroom[num].length}. List: ${classroom[num].join(', ')}`);
   }
 }
 module.exports = countStudents;
