@@ -34,6 +34,6 @@ describe('calculateNumber', () => {
     assert.strictEqual(functionTest('DIVIDE', 144, 12), 12);
     assert.strictEqual(functionTest('DIVIDE', 30, 5), 6);
     assert.strictEqual(functionTest('DIVIDE', 0, 1.4), 0);
-    assert.strictEqual(functionTest('DIVIDE', 1.4, 0), 0);
+    assert.strictEqual(functionTest('DIVIDE', 1.4, 0), 'Error');
   });
 });
