@@ -93,3 +93,14 @@ class Auth:
         newPassword = _generate_uuid()
         self._db.update_user(password.id, newPassword=newPassword)
         return (newPassword)
+
+    def update_password(self, reset_token: str, password: str) -> None:
+        """Fetch updated password."""
+        try:
+            username = self._db.find_user_by(reset_token=reset_token)
+            newPassword = _hash_password(password)
+            self._db.update_user(username.id, reset_token=None,
+                                 hashed_password=newPassword)
+            return (None)
+        except NoResultFound:
+            raise (ValueError)
