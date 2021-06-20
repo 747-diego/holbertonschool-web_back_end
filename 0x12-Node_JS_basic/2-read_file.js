@@ -1,7 +1,7 @@
 const fs = require('fs');
 
-function countStudents (path) {
-  const classroom = {};
+function countStudents(path) {
+  const student = {};
   let len = 0;
   let data;
 
@@ -16,15 +16,15 @@ function countStudents (path) {
 
   for (const line of students) {
     len += 1;
-    if (!(line[3] in classroom)) {
-      classroom[line[3]] = [];
+    if (!(line[3] in student)) {
+      student[line[3]] = [];
     }
-    classroom[line[3]].push(line[0]);
+    student[line[3]].push(line[0]);
   }
 
   console.log(`Number of students: ${len}`);
-  for (const i of Object.keys(classroom)) {
-    console.log(`Number of students in ${i}: ${classroom[i].length}. List: ${classroom[i].join(', ')}`);
+  for (const i of Object.keys(student)) {
+    console.log(`Number of students in ${i}: ${student[i].length}. List: ${student[i].join(', ')}`);
   }
 }
 module.exports = countStudents;
