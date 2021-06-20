@@ -1,5 +1,5 @@
 const request = require('request');
-const chai = require('chai');
+const chai = require('chai')
 const { expect } = require('chai');
 
 describe('API test', () => {
