@@ -1,15 +1,13 @@
 const request = require('request');
-const chai = require('chai');
+const chai = require('chai';
 const { expect } = require('chai');
 
 describe('API test', () => {
   it('respond with 200 code and body', (done) => {
-    request('http://localhost:7865', 'GET', (error, response, message) => {
-      if (error) {
-        throw (error);
-      }
-      expect(response.statusCode).to.equal(200);
-      expect(message).to.equal('Welcome to the payment system');
+    request('http://localhost:7865', 'GET', (err, res, body) => {
+      if (err) throw err;
+      expect(res.statusCode).to.equal(200);
+      expect(body).to.equal('Welcome to the payment system');
     });
     done();
   });
