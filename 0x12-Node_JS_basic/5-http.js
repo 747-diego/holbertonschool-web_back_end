@@ -5,12 +5,10 @@ const util = require('util');
 const readFile = util.promisify(fs.readFile);
 
 function countStudents(file) {
-  let message;
-
   return readFile(file, 'utf8').then((data) => {
     const classroom = {};
     let seats = 0;
-
+    let message = `Number of students: ${seats}\n`;
     const sep = data.split('\n');
     const students = sep.slice(1).map((seat) => seat.split(',')).filter((seat) => seat.length > 0 && seat[0] !== '');
 
