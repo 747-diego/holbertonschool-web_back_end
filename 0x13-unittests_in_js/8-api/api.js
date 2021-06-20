@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const connection = 7865;
 
-app.get('/', (require, response) => {
-  response.send('Welcome to the payment system');
+app.get('/', (req, res) => {
+  res.send('Welcome to the payment system');
 });
 
 app.listen(connection, () => {
