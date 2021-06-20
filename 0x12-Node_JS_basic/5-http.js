@@ -20,7 +20,7 @@ function countStudents(file) {
       classroom[student[3]].push(student[0]);
     }
 
-    // message = `Number of students: ${seats}\n`;
+    message = `Number of students: ${seats}\n`;
     for (const name of Object.keys(classroom)) {
       message += `Number of students in ${name}: ${classroom[name].length}. List: ${classroom[name].join(', ')}\n`;
     }
@@ -30,16 +30,20 @@ function countStudents(file) {
 
 const server = http.createServer(async (req, res) => {
   let seats;
+  let welcome;
+  let list;
   res.writeHead(200, 'Content-Type', 'text/plain');
   switch (req.url) {
     case '/students':
       seats = await countStudents(process.argv[2]);
-      res.write(`This is the list of our students\n${seats}`);
+      list = `This is the list of our students\n${seats}`;
+      res.write(list);
       res.end();
       break;
 
     default:
-      res.write('Hello Holberton School!');
+      welcome = 'Hello Holberton School!';
+      res.write(welcome);
       res.end();
       break;
   }
