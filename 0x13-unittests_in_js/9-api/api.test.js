@@ -13,11 +13,6 @@ describe('index page', () => {
     request.get.restore();
     request.post.restore();
   });
-  it('error code 200', () => {
-    request('http://localhost:7865/cart/12', function(err, res, body) {
-      expect(res.statusCode).to.equal(200);
-    });
-  });
   it('error code 404', () => {
     request('http://localhost:7865/cart/hello', function(err, res, body) {
       expect(res.statusCode).to.equal(404);
