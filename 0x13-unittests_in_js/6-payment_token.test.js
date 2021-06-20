@@ -3,11 +3,15 @@ const { expect } = require('chai');
 
 const getPaymentTokenFromAPI = require('./6-payment_token');
 
-describe('getPaymentTokenFromAPI', () => {
+describe('getPaymentTokenFromAPI', (done) => {
   it('promise response from API should resolve', () => {
-    const test = getPaymentTokenFromAPI(true);
-    const response = await test;
-    expect(response).to.eql({ data: 'Successful response from the API' });
-    console.log(response);
+    getPaymentTokenFromAPI(true)
+      .then((response) => {
+        expect(response).to.eql({ data: 'Successful response from the API' });
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
   });
 });
