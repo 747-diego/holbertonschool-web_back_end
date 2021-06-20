@@ -20,7 +20,7 @@ function countStudents(file) {
       classroom[student[3]].push(student[0]);
     }
 
-    message = `Number of students: ${seats}\n`;
+    // message = `Number of students: ${seats}\n`;
     for (const name of Object.keys(classroom)) {
       message += `Number of students in ${name}: ${classroom[name].length}. List: ${classroom[name].join(', ')}\n`;
     }
