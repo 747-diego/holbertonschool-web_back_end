@@ -23,7 +23,12 @@ describe('index page', () => {
       expect(body).to.equal('Welcome to the payment system');
     });
   });
-  it('get?', () => {
+  it('payment message', () => {
+    request('http://localhost:7865/cart/12', function(err, res, body) {
+      expect(body).to.equal('Payment methods for cart 12');
+    });
+  });
+  it('api connected', () => {
     request('http://localhost:7865/', function(err, res, body) {
       expect(res.request.method).to.equal('GET');
     });
