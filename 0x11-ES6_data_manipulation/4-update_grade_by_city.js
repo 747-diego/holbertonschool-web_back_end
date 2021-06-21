@@ -9,8 +9,8 @@ export default function updateStudentGradeByCity(arrObj, city, newGrade) {
     } else {
       students.grade = 'N/A';
     }
-    return (students);
+    return students;
   });
 
-  return (response);
+  return response;
 }
