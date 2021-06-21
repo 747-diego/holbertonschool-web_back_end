@@ -4,14 +4,14 @@ from pymongo import MongoClient
 
 
 if __name__ == "__main__":
-    localhost = MongoClient('mongodb://127.0.0.1:27017')
-    dependencies = localhost.logs.nginx
-    docuLogs = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    client = MongoClient('mongodb://127.0.0.1:27017')
+    collection = client.logs.nginx
+    method = ["GET", "POST", "PUT", "PATCH", "DELETE"]
 
-    print('{} logs'.format(dependencies.count_documents({})))
+    print('{} logs'.format(collection.count_documents({})))
     print("Methods:")
-    for packages in docuLogs:
+    for i in method:
         print('\tmethod {}: {}'.format(
-            packages, dependencies.count_documents({'method': packages})))
+            i, collection.count_documents({'method': i})))
     print('{} status check'.format(
-        dependencies.count_documents({'path': '/status'})))
+        collection.count_documents({'path': '/status'})))
