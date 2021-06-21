@@ -1,7 +1,7 @@
 export default function updateStudentGradeByCity(arrObj, city, newGrade) {
-  let result = arrObj.filter((stud) => stud.location === city);
+  let response = arrObj.filter((stud) => stud.location === city);
 
-  result = result.map((studenta) => {
+  response = response.map((studenta) => {
     const student = studenta;
     const res = newGrade.filter((x) => student.id === x.studentId);
     if (res.length > 0) {
@@ -12,5 +12,5 @@ export default function updateStudentGradeByCity(arrObj, city, newGrade) {
     return student;
   });
 
-  return result;
+  return response;
 }
